@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="bbdf8700-6799-4105-9fb9-34440fbcb9eb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekt/src/main/java/user/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekt/src/main/java/user/models/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekt/src/main/java/user/models/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekt/src/main/java/user/models/UserDAO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +89,9 @@
       <workItem from="1583870551796" duration="3346000" />
       <workItem from="1584114200244" duration="400000" />
       <workItem from="1584114641183" duration="232000" />
-      <workItem from="1584129252193" duration="618000" />
+      <workItem from="1584129252193" duration="927000" />
+      <workItem from="1584176788315" duration="8000" />
+      <workItem from="1584192620204" duration="102000" />
     </task>
     <task id="LOCAL-00001" summary="Initialized project and set environment up">
       <created>1583870590380</created>
@@ -116,7 +121,14 @@
       <option name="project" value="LOCAL" />
       <updated>1584129829319</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="[T-1] Removed .idea folder from repo">
+      <created>1584129942952</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1584129942952</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -129,7 +141,8 @@
     <MESSAGE value="Set up project structure" />
     <MESSAGE value="[T-1] Connected to database, created User model and UserDAO class." />
     <MESSAGE value="[T-1] Cleaned up repository due to .gitignore update" />
-    <option name="LAST_COMMIT_MESSAGE" value="[T-1] Cleaned up repository due to .gitignore update" />
+    <MESSAGE value="[T-1] Removed .idea folder from repo" />
+    <option name="LAST_COMMIT_MESSAGE" value="[T-1] Removed .idea folder from repo" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -151,10 +164,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="808" y="409" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1583870400955" />
-    <state x="547" y="114" key="CommitChangelistDialog2" timestamp="1584129828383">
+    <state x="547" y="114" key="CommitChangelistDialog2" timestamp="1584129941978">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="547" y="114" key="CommitChangelistDialog2/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1584129828383" />
+    <state x="547" y="114" key="CommitChangelistDialog2/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1584129941978" />
     <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1583870297325">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -183,10 +196,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="162" key="SettingsEditor/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1583873515020" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1584129854276">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1584129954955">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1584129854276" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1584129954955" />
     <state x="92" y="92" width="1736" height="856" key="com.intellij.dvcs.ui.CompareBranchesDialog" timestamp="1583873710439">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

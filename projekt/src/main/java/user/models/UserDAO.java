@@ -40,7 +40,7 @@ public class UserDAO implements Dao<User> {
     public List<User> getAll() {
         open();
         entityManager.getTransaction().begin();
-        List<User> results = entityManager.createQuery("select a from User a").getResultList();
+        List<User> results = entityManager.createQuery("select a from User a", User.class).getResultList();
         close();
         return results;
     }
@@ -63,19 +63,25 @@ public class UserDAO implements Dao<User> {
      * @param user   - user object that u want to update
      * @param params - String map with params for update
      *               for example - updating username require map with key: username and value: someValue
+     *               for example to set admin or leader value param leader: true is needed.
      */
     @Override
     public void update(User user, Map<String, String> params) {
         open();
         entityManager.getTransaction().begin();
-        for (Map.Entry mapElement : params.entrySet()) {
-            String key = ((String) mapElement.getKey()).toLowerCase();
-            String value = (String) mapElement.getValue();
+        for (Map.Entry<String, String> mapElement : params.entrySet()) {
+            String key = mapElement.getKey().toLowerCase();
+            String value = mapElement.getValue();
             for (Method method : User.class.getMethods()) {
                 String methodName = method.getName().toLowerCase();
                 if (methodName.contains("set" + key)) {
                     try {
-                        method.invoke(user, value);
+                        if (methodName.equals("setadmin") || methodName.equals("setleader")) {
+                            method.invoke(user, value.equals("true"));
+                        } else {
+                            method.invoke(user, value);
+                        }
+
                     } catch (IllegalAccessException | InvocationTargetException e) {
                         e.printStackTrace();
                     }

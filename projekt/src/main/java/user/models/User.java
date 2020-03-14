@@ -9,8 +9,9 @@ public class User {
     private String password;
     private String firstName;
     private String lastName;
+    private boolean admin;
+    private boolean leader;
 
-    //TODO add boolean fields: is_admin, is_leader
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long getId() {
@@ -52,6 +53,22 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
+    }
+
+    public boolean isLeader() {
+        return leader;
+    }
+
+    public void setLeader(boolean leader) {
+        this.leader = leader;
     }
 
     @Override
