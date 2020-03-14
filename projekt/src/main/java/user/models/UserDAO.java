@@ -2,10 +2,9 @@ package user.models;
 
 import core.interfaces.Dao;
 import org.mindrot.jbcrypt.BCrypt;
+import task.models.Task;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import javax.persistence.*;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
@@ -14,11 +13,13 @@ import java.util.Optional;
 
 public class UserDAO implements Dao<User> {
 
+    @PersistenceContext
     private static EntityManagerFactory entityManagerFactory;
+    @PersistenceContext
     public static EntityManager entityManager;
     private static final String PERSISTENCE_NAME = "CONNECTION";
 
-
+    // TODO getUserByUsername method
     /**
      * @param id = id of user that you want to get
      * @return user's instance or null, when did't find
@@ -49,12 +50,29 @@ public class UserDAO implements Dao<User> {
      * @param user - User class instance that you want to keep in your database
      */
     @Override
-    public void save(User user) {
+    public void save(User user) throws PersistenceException {
         open();
         user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
         entityManager.getTransaction().begin();
         entityManager.persist(user);
-        entityManager.flush();
+        entityManager.getTransaction().commit();
+        close();
+    }
+
+    public void addPermission(User user, Permission p){
+        open();
+        user.getPermissions().add(p);
+        entityManager.getTransaction().begin();
+        entityManager.merge(user);
+        entityManager.getTransaction().commit();
+        close();
+    }
+
+    public void addTask(User user, Task task){
+        open();
+        user.getTasks().add(task);
+        entityManager.getTransaction().begin();
+        entityManager.merge(user);
         entityManager.getTransaction().commit();
         close();
     }
@@ -67,6 +85,7 @@ public class UserDAO implements Dao<User> {
      */
     @Override
     public void update(User user, Map<String, String> params) {
+        // TODO - REFACTOR DUE TO PERMISSIONS
         open();
         entityManager.getTransaction().begin();
         for (Map.Entry<String, String> mapElement : params.entrySet()) {
@@ -135,7 +154,7 @@ public class UserDAO implements Dao<User> {
      */
     @Override
     public void close() {
-        entityManagerFactory.close();
         entityManager.close();
+        entityManagerFactory.close();
     }
 }
