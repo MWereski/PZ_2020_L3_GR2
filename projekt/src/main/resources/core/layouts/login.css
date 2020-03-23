@@ -1,0 +1,11 @@
+#usernameField, #passwordField, #loginButton{
+    -fx-focus-color: #780006;
+    -fx-faint-focus-color: transparent;
+    -fx-font-size: 16px;
+}
+
+#loginButton {
+    -fx-border-color: #780006;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+}
