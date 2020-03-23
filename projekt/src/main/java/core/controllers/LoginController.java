@@ -13,6 +13,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
+import user.models.Permission;
 import user.models.User;
 
 import java.io.IOException;
@@ -35,35 +36,66 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        User x = new User();
-        x.setUsername("test");
-        x.setPassword("test");
+        User user = new User();
+        user.setUsername("test1");
+        user.setPassword("test");
+        Permission userPermission = new Permission();
+        userPermission.setContent("User");
+        user.setPermissions(userPermission);
+
+        User leader = new User();
+        leader.setUsername("test2");
+        leader.setPassword("test");
+        Permission leaderPermission = new Permission();
+        leaderPermission.setContent("Leader");
+        leader.setPermissions(leaderPermission);
+
+        User admin = new User();
+        admin.setUsername("test3");
+        admin.setPassword("test");
+        Permission adminPermission = new Permission();
+        adminPermission.setContent("Admin");
+        admin.setPermissions(adminPermission);
+
+        User[] users = {user, leader, admin};
         loginButton.setOnAction((event) -> {
-            boolean result = mockValidate(usernameField.getText(), passwordField.getText());
-            if(result) {
-                try{
-                    goNext(event);
+            for (User u : users) {
+                if (mockValidate(u)) {
+                    try {
+                        switch (u.getPermissions().getContent()) {
+                            case "User": {
+                                goNext(event, "userPanel.fxml");
+                                break;
+                            }
+                            case "Leader": {
+                                goNext(event, "leaderPanel.fxml");
+                                break;
+                            }
+                            case "Admin": {
+                                goNext(event, "adminPanel.fxml");
+                                break;
+                            }
+                            default: {}
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
-              catch (IOException exception){
-                    exception.printStackTrace();
-              }
-            } else {
-                alertLabel.setVisible(true);
             }
         });
 
     }
 
-    private boolean mockValidate(String username, String password){
-        return password.equals("test") && username.equals("test");
+    private boolean mockValidate(User user) {
+        return passwordField.getText().equals(user.getPassword()) && usernameField.getText().equals(user.getUsername());
     }
 
-    public void goNext(ActionEvent e) throws IOException{
+    public void goNext(ActionEvent e, String filename) throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation((getClass()).getResource("/user/layouts/Home.fxml"));
+        loader.setLocation((getClass()).getResource("/user/layouts/" + filename));
         Parent application = loader.load();
         Scene applicationScene = new Scene(application);
-        Stage window = (Stage)((Node) e.getSource()).getScene().getWindow();
+        Stage window = (Stage) ((Node) e.getSource()).getScene().getWindow();
         window.setScene(applicationScene);
         window.show();
 

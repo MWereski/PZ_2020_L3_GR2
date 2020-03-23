@@ -15,8 +15,8 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         stage.setTitle("Schronisko");
         stage.setResizable(false);
-        stage.setMaxHeight(410.0);
-        stage.setMaxWidth(600.0);
+        stage.setMaxHeight(454.0);
+        stage.setMaxWidth(762.0);
         stage.setX(650.0);
         stage.setY(225.0);
         FXMLLoader loader = new FXMLLoader();
