@@ -1,4 +1,7 @@
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import task.models.Task;
 import task.models.TaskDAO;
@@ -7,22 +10,26 @@ import user.models.PermissionDAO;
 import user.models.User;
 import user.models.UserDAO;
 
-import javax.persistence.PersistenceException;
-import java.util.HashSet;
 
 public class Main extends Application {
     public void start(Stage stage) throws Exception {
-        stage.setTitle("Company Director 1.0");
+        stage.setTitle("Schronisko");
         stage.setResizable(false);
-        stage.setMaxHeight(410.0);
-        stage.setMaxWidth(600.0);
+        stage.setMaxHeight(454.0);
+        stage.setMaxWidth(762.0);
         stage.setX(650.0);
         stage.setY(225.0);
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(this.getClass().getResource("/core/layouts/login.fxml"));
+        AnchorPane layout = loader.load();
+        Scene scene = new Scene(layout);
+        // scene.getStylesheets().add("com/company/application.css");
+        stage.setScene(scene);
         stage.show();
     }
 
     public static void main(String[] args) {
-        setMockData();
+        // setMockData();
         launch(args);
     }
 

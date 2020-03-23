@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="454.0" prefWidth="762.0" stylesheets="@./login.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="core.controllers.LoginController">
+    <TextField id="usernameField" fx:id="usernameField" layoutX="256.0" layoutY="185.0" prefHeight="42.0" prefWidth="250.0" promptText="Nazwa użytkownika" />
+    <PasswordField id="passwordField" fx:id="passwordField" layoutX="256.0" layoutY="234.0" prefHeight="42.0" prefWidth="250.0" promptText="Hasło" />
+    <Button id="loginButton" fx:id="loginButton" layoutX="329.0" layoutY="307.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="103.0" text="Zaloguj" />
+    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="307.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@../../assets/logo.png" />
+    </ImageView>
+   <Label fx:id="alertLabel" layoutX="259.0" layoutY="358.0" text="Błędne dane" visible="false" />
+</AnchorPane>
