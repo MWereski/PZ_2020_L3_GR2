@@ -30,7 +30,7 @@ public class Permission {
         this.content = content;
     }
 
-    @ManyToMany(mappedBy = "permissions")
+    @OneToMany
     public Set<User> getUsers() {
         return users;
     }

@@ -61,7 +61,7 @@ public class UserDAO implements Dao<User> {
 
     public void addPermission(User user, Permission p){
         open();
-        user.getPermissions().add(p);
+        user.setPermissions(p);
         entityManager.getTransaction().begin();
         entityManager.merge(user);
         entityManager.getTransaction().commit();

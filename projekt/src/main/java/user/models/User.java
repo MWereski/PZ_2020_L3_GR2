@@ -4,7 +4,6 @@ import task.models.Task;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -14,7 +13,7 @@ public class User {
     private String password;
     private String firstName;
     private String lastName;
-    private Set<Permission> permissions;
+    private Permission permission;
     private List<Task> tasks;
 
     @Id
@@ -63,19 +62,13 @@ public class User {
         this.lastName = lastName;
     }
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "users_permissions",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "permission_id")
-
-    )
-    public Set<Permission> getPermissions() {
-        return permissions;
+    @ManyToOne
+    public Permission getPermissions() {
+        return permission;
     }
 
-    public void setPermissions(Set<Permission> permissions) {
-        this.permissions = permissions;
+    public void setPermissions(Permission permission) {
+        this.permission = permission;
     }
 
     @OneToMany(fetch = FetchType.EAGER)
